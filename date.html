@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Secret</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<style>body {
+		opacity: 0;
+		transition: opacity 1s ease-in-out;
+	}</style>
+	<body class="right-sidebar is-preload">
+		<div id="page-wrapper">
+
+				<div id="header-wrapper">
+					<div id="header" class="container">
+
+				</div>
+
+				<div class="wrapper2">
+					<div class="container" id="main">
+						<div class="row gtr-150">
+							<div class="col-14 col-12-narrower">
+								<h3>                        yayyy!!! we are now officially together for</h3>
+								<h3 id="timer">00:00:00:00</h3>
+								<button onclick="startTimer()">Start New Timer</button>
+							
+
+								<p> <img src="images/Untitleddes - Copy.png" width="1215" height="600" alt="" id="flowerImage"/> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br> <br /> </p>
+										<p><br>  <br /> </p>
+										
+									</article>
+
+							</div>
+					
+						</div>
+						<div class="row features">
+							<section class="col-4 col-12-narrower feature">
+		
+							</section>
+						</div>
+					</div>
+				</div>
+
+			
+
+		</div>
+		<script>
+
+			document.addEventListener("DOMContentLoaded", function () {
+					document.body.style.opacity = "0";
+					document.body.style.transition = "opacity 0.6s ease-in-out";
+					setTimeout(() => (document.body.style.opacity = "1"), 800);
+				});
+
+			function startTimer() {
+				const now = new Date().toISOString();
+				localStorage.setItem("startTime", now);
+				updateTimer();
+			}
+	
+			function updateTimer() {
+				const startTime = localStorage.getItem("startTime");
+				if (!startTime) return;
+	
+				const start = new Date(startTime).getTime();
+				const now = new Date().getTime();
+				const elapsed = now - start;
+
+				const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+				const hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+				const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+	
+				document.getElementById("timer").innerText = `${days} days : ${hours} hours : ${minutes} minutes : ${seconds} seconds`;
+			}
+	
+			setInterval(updateTimer, 1000);
+			updateTimer();
+		</script>
+
+	</body>
+</html>
