@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>For han</title>
+		<title>For Ling</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -10,10 +10,19 @@
 			#header-wrapper {
 				height: 100vh;
 				display: flex;
+				padding: 4em 0 2em 0;
 				justify-content: center;
 				align-items: center;
 				text-align: center;
-				background: #f8f8f8;
+				background-image: url("images/header.svg");
+				background-image: url("images/overlay.png"), url("images/header.svg"), -moz-linear-gradient(75deg, #cc231e 15%, #f5624d 55%);
+				background-image: url("images/overlay.png"), url("images/header.svg"), -webkit-linear-gradient(75deg, #cc231e 15%, #f5624d 55%);
+				background-image: url("images/overlay.png"), url("images/header.svg"), -ms-linear-gradient(75deg, #cc231e 15%, #f5624d 55%);
+				background-image: url("images/overlay.png"), url("images/header.svg"), linear-gradient(75deg, #cc231e 15%, #f5624d 55%);
+				background-color: #70b3ff;
+				background-size: 100% 620%;
+				background-size: 128px 128px, 100% 620%, auto;
+				background-repeat: repeat, no-repeat, no-repeat;
 			}
 
 			/* Center hero content */
@@ -33,6 +42,12 @@
 				text-align: center;
 				margin-bottom: 20px;
 			}
+
+			.prompt {
+				font-size: 1.5em;
+				color: #cc231e;
+				margin-bottom: 10px;
+			}
 		</style>
 	</head>
 
@@ -42,7 +57,7 @@
 			<div id="header-wrapper">
 				<section id="hero" class="container">
 					<header>
-						<h2>dear han, would you like to join me on a <br><br> Christmas date?</h2>
+						<h2>dear little ling, would you like to become my <br><br> girlfriend?</h2>
 					</header>
 				</section>
 			</div>
@@ -51,29 +66,81 @@
 				<div class="container">
 					<div class="row">
 						<section class="col-6 col-12-narrower feature">
-							<div class="image-wrapper first">
-								<a href="ourdate.html" class="image featured first">
-									<img src="images/clipart644510.png" width="300" height="450" alt="" />
+							<div class="image-wrapper">
+								<a class="image featured first">
+									<img src="images/clipart644510.gif" width="300" height="450" alt="" id="yesImage"/>
 								</a>
 							</div>
+							<p id="promptText" class="prompt"></p>
 							<ul class="actions">
-								<li><a href="ourdate.html" class="button">yes</a></li>
+								<li><a id="yesButton" class="button">yesss!</a></li>
+								<br></br>
+								<br></br>
+
 							</ul>
 						</section>
 
 						<section class="col-6 col-12-narrower feature">
 							<div class="image-wrapper">
-								<a href="" class="image featured">
-									<img src="images/unknown.png" alt="" />
+								<a class="image featured">
+									<img src="images/heart-sad-upset.gif" alt="" id="noButton"/>
 								</a>
 							</div>
 							<ul class="actions">
-								<li><a class="button2" id="button2move">no</a></li>
+								<li><a class="button2" id="button2move">nopeee</a></li>
 							</ul>
 						</section>
 					</div>
 				</div>
 			</div>
 		</div>
+		<script>
+			document.getElementById("button2move").addEventListener("click", function() {
+				let noButton = document.getElementById("noButton");
+				let currentWidth = noButton.width;
+				let currentHeight = noButton.height;
+				noButton.width = currentWidth * 1.25;
+				noButton.height = currentHeight * 1.25;
+			});
+		
+			document.getElementById("yesButton").addEventListener("click", function() {
+				let promptText = document.getElementById("promptText");
+				let button = document.getElementById("yesButton");
+				let yesImage = document.getElementById("yesImage");
+		
+				if (button.innerText === "yesss!") {
+					promptText.innerText = "are you sure? because i will be very needy";
+					button.innerText = "no problem!";
+					yesImage.src = "images/peach-goma (1).gif";
+		
+				} else if (button.innerText === "no problem!") {
+					promptText.innerText = "that also means i will be clingy";
+					button.innerText = "i will be clingy too!";
+					yesImage.src = "images/hug.gif";
+		
+				} else if (button.innerText === "i will be clingy too!") {
+					promptText.innerText = "is it the time to make it official then?";
+					button.innerText = "yes";
+					yesImage.src = "images/peach-goma-peach-and-goma.gif";
+		
+				} else {
+					fadeOutAndRedirect("date.html");
+				}
+			});
+		
+			function fadeOutAndRedirect(url) {
+				document.body.style.transition = "opacity 0.6s ease-in-out";
+				document.body.style.opacity = "0";
+				setTimeout(() => window.location.href = url, 600);
+			}
+	
+
+			document.getElementById("button2move").addEventListener("click", function() {
+				let yesImage = document.getElementById("yesImage");
+				yesImage.width *= 1.25;
+				yesImage.height *= 1.25;
+			});
+		</script>
 	</body>
+	
 </html>
